@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DigitalCreateur — Sites web professionnels</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family: Arial, sans-serif; background:#0f0f0f; color:#fff; }
+
+nav { display:flex; align-items:center; justify-content:space-between; padding:18px 40px; background:#0f0f0f; border-bottom:1px solid #222; position:sticky; top:0; z-index:100; }
+.logo { font-family:Georgia, serif; font-size:22px; color:#fff; letter-spacing:1px; text-decoration:none; }
+.logo span { background:linear-gradient(90deg,#a855f7,#ec4899,#f97316); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+.nav-links { display:flex; gap:28px; }
+.nav-links a { font-size:12px; letter-spacing:1.5px; text-transform:uppercase; color:#888; text-decoration:none; }
+.nav-links a:hover { color:#fff; }
+.nav-btn { padding:10px 24px; background:linear-gradient(90deg,#a855f7,#ec4899); color:#fff; font-size:11px; letter-spacing:1.5px; text-transform:uppercase; border-radius:25px; cursor:pointer; border:none; text-decoration:none; }
+
+.hero { padding:80px 40px; display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center; border-bottom:1px solid #222; }
+.hero-tag { display:inline-block; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#a855f7; border:1px solid #a855f7; border-radius:25px; padding:6px 16px; margin-bottom:20px; }
+.hero-title { font-family:Georgia, serif; font-size:48px; font-weight:400; color:#fff; line-height:1.2; margin-bottom:20px; }
+.hero-title span { background:linear-gradient(90deg,#a855f7,#ec4899,#f97316); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+.hero-sub { font-size:16px; color:#aaa; line-height:1.7; margin-bottom:32px; }
+.hero-btns { display:flex; gap:14px; flex-wrap:wrap; }
+.btn-grad { padding:14px 28px; background:linear-gradient(90deg,#a855f7,#ec4899); color:#fff; font-size:12px; letter-spacing:2px; text-transform:uppercase; border-radius:25px; cursor:pointer; border:none; text-decoration:none; display:inline-block; }
+.btn-out { padding:13px 27px; background:transparent; color:#fff; font-size:12px; letter-spacing:2px; text-transform:uppercase; border-radius:25px; cursor:pointer; border:1px solid #444; text-decoration:none; display:inline-block; }
+.btn-out:hover { border-color:#a855f7; color:#a855f7; }
+.stats-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+.stat { background:#1a1a1a; border:1px solid #333; border-radius:16px; padding:24px; text-align:center; }
+.stat-num { font-family:Georgia, serif; font-size:36px; background:linear-gradient(90deg,#a855f7,#ec4899); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+.stat-label { font-size:11px; letter-spacing:1px; text-transform:uppercase; color:#666; margin-top:6px; }
+
+.strip { display:flex; justify-content:space-around; padding:16px 40px; border-bottom:1px solid #222; background:#111; flex-wrap:wrap; gap:12px; }
+.strip-item { font-size:12px; letter-spacing:1px; text-transform:uppercase; color:#666; display:flex; align-items:center; gap:8px; }
+.strip-item::before { font-size:16px; }
+
+section { padding:80px 40px; border-bottom:1px solid #222; }
+.section-alt { background:#111; }
+.section-title { font-family:Georgia, serif; font-size:36px; font-weight:400; color:#fff; margin-bottom:8px; }
+.section-sub { font-size:14px; color:#666; margin-bottom:40px; }
+
+.works-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:24px; }
+.work-card { background:#1a1a1a; border:1px solid #333; border-radius:16px; overflow:hidden; }
+.work-preview { height:200px; display:flex; align-items:center; justify-content:center; border-bottom:1px solid #333; position:relative; }
+.work-badge { position:absolute; top:12px; right:12px; background:linear-gradient(90deg,#10b981,#059669); color:#fff; font-size:10px; letter-spacing:1px; text-transform:uppercase; padding:4px 12px; border-radius:25px; }
+.work-info { padding:20px; }
+.work-tag { font-size:10px; letter-spacing:2px; text-transform:uppercase; color:#a855f7; margin-bottom:6px; }
+.work-name { font-size:16px; font-weight:bold; color:#fff; margin-bottom:4px; }
+.work-desc { font-size:13px; color:#666; }
+
+.preview-cosmet { background:#faf9f7; width:100%; height:100%; display:flex; flex-direction:column; }
+.prev-nav { background:#fff; border-bottom:1px solid #e8e0d0; padding:10px 16px; display:flex; align-items:center; justify-content:space-between; }
+.prev-logo-c { font-family:Georgia,serif; font-size:14px; letter-spacing:2px; color:#1a1a1a; text-transform:uppercase; }
+.prev-links-c { display:flex; gap:12px; }
+.prev-link-c { font-size:10px; letter-spacing:1px; text-transform:uppercase; color:#aaa; }
+.prev-hero-c { display:grid; grid-template-columns:1fr 1fr; flex:1; }
+.prev-left-c { background:#faf9f7; padding:16px; display:flex; flex-direction:column; justify-content:center; }
+.prev-eyebrow-c { font-size:9px; letter-spacing:2px; text-transform:uppercase; color:#aaa; margin-bottom:6px; }
+.prev-title-c { font-family:Georgia,serif; font-size:16px; color:#1a1a1a; margin-bottom:10px; }
+.prev-btn-c { background:#1a1a1a; color:#fff; font-size:9px; letter-spacing:1px; text-transform:uppercase; padding:6px 12px; border-radius:1px; display:inline-block; }
+.prev-right-c { background:#f0ece4; display:flex; align-items:center; justify-content:center; }
+.prev-circle-c { width:56px; height:56px; border-radius:50%; border:1px solid #d4c9b0; display:flex; align-items:center; justify-content:center; font-size:24px; }
+
+.preview-barber { background:#111; width:100%; height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:12px; }
+.prev-barber-logo { font-size:24px; letter-spacing:4px; text-transform:uppercase; color:#fff; font-family:Georgia,serif; }
+.prev-barber-logo span { color:#c9a96e; }
+.prev-barber-tag { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#c9a96e; border:1px solid #c9a96e; padding:4px 14px; border-radius:2px; }
+.prev-barber-svcs { display:flex; gap:10px; }
+.prev-barber-svc { background:rgba(255,255,255,0.06); border:1px solid #333; border-radius:4px; padding:6px 12px; font-size:11px; color:#888; }
+
+.pricing-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+.price-card { background:#1a1a1a; border:1px solid #333; border-radius:16px; padding:28px; }
+.price-card.featured { border:2px solid #a855f7; }
+.price-badge { display:inline-block; font-size:11px; letter-spacing:1px; text-transform:uppercase; padding:4px 14px; border-radius:25px; margin-bottom:14px; background:linear-gradient(90deg,#a855f7,#ec4899); color:#fff; }
+.price-name { font-size:14px; font-weight:bold; color:#fff; margin-bottom:10px; text-transform:uppercase; letter-spacing:1px; }
+.price-amount { font-family:Georgia,serif; font-size:44px; color:#fff; margin-bottom:6px; }
+.price-delay { font-size:13px; color:#666; margin-bottom:20px; }
+.price-features { display:flex; flex-direction:column; gap:10px; margin-bottom:24px; }
+.price-feature { font-size:14px; color:#aaa; display:flex; align-items:center; gap:10px; }
+.price-feature::before { content:"✓"; color:#a855f7; font-weight:bold; flex-shrink:0; }
+.price-btn { width:100%; padding:12px; font-size:12px; letter-spacing:2px; text-transform:uppercase; border-radius:25px; cursor:pointer; text-align:center; display:block; text-decoration:none; }
+.price-btn-grad { background:linear-gradient(90deg,#a855f7,#ec4899); color:#fff; border:none; }
+.price-btn-out { background:transparent; color:#fff; border:1px solid #444; }
+
+.steps { display:grid; grid-template-columns:repeat(4,1fr); gap:20px; }
+.step { text-align:center; padding:24px 16px; background:#1a1a1a; border:1px solid #333; border-radius:16px; }
+.step-num { width:48px; height:48px; border-radius:50%; background:linear-gradient(135deg,#a855f7,#ec4899); display:flex; align-items:center; justify-content:center; font-family:Georgia,serif; font-size:22px; color:#fff; margin:0 auto 16px; }
+.step-title { font-size:14px; font-weight:bold; color:#fff; margin-bottom:8px; }
+.step-desc { font-size:13px; color:#666; line-height:1.6; }
+
+.contact-inner { display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center; }
+.contact-title { font-family:Georgia,serif; font-size:36px; font-weight:400; color:#fff; margin-bottom:14px; }
+.contact-sub { font-size:15px; color:#aaa; line-height:1.7; margin-bottom:28px; }
+.contact-infos { display:flex; flex-direction:column; gap:16px; }
+.contact-info { display:flex; align-items:center; gap:14px; font-size:15px; color:#aaa; }
+.contact-info-icon { font-size:22px; width:44px; height:44px; background:#1a1a1a; border:1px solid #333; border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+.form { display:flex; flex-direction:column; gap:14px; background:#1a1a1a; border:1px solid #333; border-radius:16px; padding:32px; }
+.form input, .form textarea { padding:12px 16px; font-size:14px; border:1px solid #333; border-radius:8px; background:#0f0f0f; color:#fff; width:100%; }
+.form textarea { height:120px; resize:none; }
+.form-submit { padding:14px; background:linear-gradient(90deg,#a855f7,#ec4899); color:#fff; font-size:12px; letter-spacing:2px; text-transform:uppercase; border:none; border-radius:25px; cursor:pointer; width:100%; }
+
+footer { padding:28px 40px; border-top:1px solid #222; background:#0f0f0f; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; }
+.footer-logo { font-family:Georgia,serif; font-size:18px; color:#fff; }
+.footer-logo span { background:linear-gradient(90deg,#a855f7,#ec4899); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+.footer-copy { font-size:13px; color:#444; }
+
+@media (max-width:768px) {
+  nav { padding:14px 20px; }
+  .nav-links { display:none; }
+  .hero { grid-template-columns:1fr; padding:48px 20px; gap:32px; }
+  .hero-title { font-size:32px; }
+  .works-grid { grid-template-columns:1fr; }
+  .pricing-grid { grid-template-columns:1fr; }
+  .steps { grid-template-columns:repeat(2,1fr); }
+  .contact-inner { grid-template-columns:1fr; }
+  section { padding:48px 20px; }
+  .strip { padding:14px 20px; }
+  footer { padding:20px; flex-direction:column; text-align:center; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="logo">Digital<span>Createur</span></a>
+  <div class="nav-links">
+    <a href="#realisations">Realisations</a>
+    <a href="#tarifs">Tarifs</a>
+    <a href="#comment">Comment ca marche</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <a href="#contact" class="nav-btn">Demander un site</a>
+</nav>
+
+<div class="hero">
+  <div>
+    <div class="hero-tag">Creation de sites web professionnels</div>
+    <h1 class="hero-title">Votre commerce merite un <span>site qui vend</span></h1>
+    <p class="hero-sub">Sites vitrines modernes, elegants et adaptes mobile pour les commerces, artisans et independants. Livraison en 3 a 7 jours. Satisfait ou rembourse.</p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-grad">Obtenir mon site</a>
+      <a href="#realisations" class="btn-out">Voir mes realisations</a>
+    </div>
+  </div>
+  <div class="stats-grid">
+    <div class="stat"><div class="stat-num">10+</div><div class="stat-label">Sites crees</div></div>
+    <div class="stat"><div class="stat-num">3j</div><div class="stat-label">Delai moyen</div></div>
+    <div class="stat"><div class="stat-num">5★</div><div class="stat-label">Note Fiverr</div></div>
+    <div class="stat"><div class="stat-num">100%</div><div class="stat-label">Satisfaits</div></div>
+  </div>
+</div>
+
+<div class="strip">
+  <div class="strip-item">📱 Adapte mobile</div>
+  <div class="strip-item">⚡ Livraison 3-7 jours</div>
+  <div class="strip-item">🔄 Retouches incluses</div>
+  <div class="strip-item">✅ Satisfait ou rembourse</div>
+</div>
+
+<section id="realisations" class="section-alt">
+  <div class="section-title">Mes realisations</div>
+  <div class="section-sub">Sites livres recemment</div>
+  <div class="works-grid">
+    <div class="work-card">
+      <div class="work-preview">
+        <div class="preview-cosmet">
+          <div class="prev-nav">
+            <div class="prev-logo-c">Aurore Paris</div>
+            <div class="prev-links-c">
+              <span class="prev-link-c">Collection</span>
+              <span class="prev-link-c">Soins</span>
+              <span class="prev-link-c">Contact</span>
+            </div>
+          </div>
+          <div class="prev-hero-c">
+            <div class="prev-left-c">
+              <div class="prev-eyebrow-c">Nouvelle collection</div>
+              <div class="prev-title-c">L'elegance a l'etat pur</div>
+              <div class="prev-btn-c">Decouvrir</div>
+            </div>
+            <div class="prev-right-c"><div class="prev-circle-c">✨</div></div>
+          </div>
+        </div>
+        <div class="work-badge">Livre</div>
+      </div>
+      <div class="work-info">
+        <div class="work-tag">Boutique cosmetiques</div>
+        <div class="work-name">Aurore Paris</div>
+        <div class="work-desc">Site vitrine luxe — 5 sections completes</div>
+      </div>
+    </div>
+    <div class="work-card">
+      <div class="work-preview">
+        <div class="preview-barber">
+          <div class="prev-barber-logo">The <span>Barber</span></div>
+          <div class="prev-barber-tag">Barbier professionnel</div>
+          <div class="prev-barber-svcs">
+            <div class="prev-barber-svc">Coupe 20€</div>
+            <div class="prev-barber-svc">Barbe 15€</div>
+            <div class="prev-barber-svc">Forfait 30€</div>
+          </div>
+        </div>
+        <div class="work-badge">Livre</div>
+      </div>
+      <div class="work-info">
+        <div class="work-tag">Barbier</div>
+        <div class="work-name">The Barber Marseille</div>
+        <div class="work-desc">Site vitrine + reservation en ligne — 6 sections</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="tarifs">
+  <div class="section-title">Tarifs clairs</div>
+  <div class="section-sub">Sans surprise, tout inclus</div>
+  <div class="pricing-grid">
+    <div class="price-card">
+      <div class="price-name">Starter</div>
+      <div class="price-amount">80€</div>
+      <div class="price-delay">Livraison en 3 jours</div>
+      <div class="price-features">
+        <div class="price-feature">1 page complete</div>
+        <div class="price-feature">Design moderne</div>
+        <div class="price-feature">Adapte mobile</div>
+        <div class="price-feature">Formulaire de contact</div>
+        <div class="price-feature">1 revision incluse</div>
+      </div>
+      <a href="#contact" class="price-btn price-btn-out">Choisir Starter</a>
+    </div>
+    <div class="price-card featured">
+      <div class="price-badge">Le plus populaire</div>
+      <div class="price-name">Pro</div>
+      <div class="price-amount">180€</div>
+      <div class="price-delay">Livraison en 5 jours</div>
+      <div class="price-features">
+        <div class="price-feature">3 pages completes</div>
+        <div class="price-feature">Design premium</div>
+        <div class="price-feature">Galerie photos</div>
+        <div class="price-feature">Liens reseaux sociaux</div>
+        <div class="price-feature">2 revisions incluses</div>
+      </div>
+      <a href="#contact" class="price-btn price-btn-grad">Choisir Pro</a>
+    </div>
+    <div class="price-card">
+      <div class="price-name">Premium</div>
+      <div class="price-amount">350€</div>
+      <div class="price-delay">Livraison en 7 jours</div>
+      <div class="price-features">
+        <div class="price-feature">5 pages completes</div>
+        <div class="price-feature">Design sur mesure</div>
+        <div class="price-feature">Optimisation SEO</div>
+        <div class="price-feature">Mise en ligne incluse</div>
+        <div class="price-feature">3 revisions incluses</div>
+      </div>
+      <a href="#contact" class="price-btn price-btn-out">Choisir Premium</a>
+    </div>
+  </div>
+</section>
+
+<section id="comment" class="section-alt">
+  <div class="section-title">Comment ca marche</div>
+  <div class="section-sub">Simple, rapide et sans stress</div>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-title">Vous me contactez</div>
+      <div class="step-desc">Decrivez votre commerce, vos couleurs et ce que vous voulez sur votre site.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-title">Je cree votre site</div>
+      <div class="step-desc">Je conçois un site professionnel et personnalise en 3 a 7 jours.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-title">Vous validez</div>
+      <div class="step-desc">Je vous envoie un apercu. Retouches gratuites jusqu'a votre satisfaction.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-title">En ligne !</div>
+      <div class="step-desc">Votre site est mis en ligne. Vos clients peuvent vous trouver sur internet.</div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="contact-inner">
+    <div>
+      <h2 class="contact-title">Pret a avoir votre site ?</h2>
+      <p class="contact-sub">Contactez-moi et recevez un devis gratuit en moins de 24h. Je reponds a tous les messages rapidement.</p>
+      <div class="contact-infos">
+        <div class="contact-info">
+          <div class="contact-info-icon">🎵</div>
+          TikTok : @digitalcreateur
+        </div>
+        <div class="contact-info">
+          <div class="contact-info-icon">✉️</div>
+          lamsalek.kamel@gmail.com
+        </div>
+        <div class="contact-info">
+          <div class="contact-info-icon">💼</div>
+          fiverr.com/createurnumerique
+        </div>
+      </div>
+    </div>
+    <form class="form" onsubmit="alert('Merci ! Je vous contacte sous 24h.'); return false;">
+      <input type="text" placeholder="Votre prenom" required />
+      <input type="text" placeholder="Type de commerce (restaurant, coiffeur...)" required />
+      <input type="tel" placeholder="Votre telephone" required />
+      <textarea placeholder="Decrivez votre projet en quelques mots..."></textarea>
+      <button type="submit" class="form-submit">Envoyer ma demande</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">Digital<span>Createur</span></div>
+  <div class="footer-copy">© 2025 DigitalCreateur — Kamel Lamsalek — Marseille</div>
+</footer>
+
+</body>
+</html>
