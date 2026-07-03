@@ -552,7 +552,7 @@ footer { padding:30px 44px; border-top:1px solid var(--line); background:var(--i
         </div>
       </div>
     </div>
-    <form action="https://www.fiverr.com/createurnumerique" method="get" target="_blank">
+  <form id="contact-form">
     <input type="text" placeholder="Votre prénom" required>
     <input type="text" placeholder="Type de commerce" required>
     <input type="tel" placeholder="Votre téléphone" required>
@@ -561,7 +561,14 @@ footer { padding:30px 44px; border-top:1px solid var(--line); background:var(--i
     <button type="submit" class="form-submit">
         Continuer sur Fiverr
     </button>
- </form>
+</form>
+
+<script>
+document.getElementById("contact-form").addEventListener("submit", function(e) {
+    e.preventDefault();
+    window.open("https://fr.fiverr.com/s/jjxdx9V", "_blank");
+});
+</script>
   </div>
 </section>
 
