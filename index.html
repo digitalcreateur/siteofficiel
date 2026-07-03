@@ -630,7 +630,9 @@ function openWork(key) {
   document.getElementById('modal-features').innerHTML = w.features.map(f => `<div class="modal-feature">${f}</div>`).join('');
   document.getElementById('work-modal').classList.add('active');
   document.body.style.overflow = 'hidden';
-  <button id="fiverr-btn">Commander sur Fiverr</button>
+  <button id="fiverr-btn" class="modal-button">
+  Commander sur Fiverr
+</button>
 }
 
 function renderCarousel() {
